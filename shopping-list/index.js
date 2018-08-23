@@ -1,13 +1,15 @@
 'use strict';
 
-$(function () {
-  addAnItem()
+$(function() {
+  addAnItem();
+  check();
 });
 
 function addAnItem() {
-  $('form button').on('click', function (event) {
+  $('form button').on('click', function(event) {
     event.preventDefault();
     const groceryItem = $('form input').val();
+    $('form input').val('');
 
     const htmlStuff = `<li>
     <span class="shopping-item">${groceryItem}</span>
@@ -20,11 +22,15 @@ function addAnItem() {
       </button>
     </div>
   </li>`;
-    
+
     $('ul').append(htmlStuff);
   });
 }
-
-function addHtml() {
-
+function check() {
+  $('.shopping-item-toggle button').on('click', function(event) {
+    $('.shopping-item')
+      .closest('span')
+      .addClass('shopping-item__checked');
+    console.log($('.shopping-item'));
+  });
 }
