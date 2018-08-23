@@ -3,6 +3,7 @@
 $(function() {
   addAnItem();
   check();
+  removeItem();
 });
 
 function addAnItem() {
@@ -26,11 +27,15 @@ function addAnItem() {
     $('ul').append(htmlStuff);
   });
 }
+
 function check() {
-  $('.shopping-item-toggle button').on('click', function(event) {
-    $('.shopping-item')
-      .closest('span')
-      .addClass('shopping-item__checked');
-    console.log($('.shopping-item'));
+  $('.shopping-list').on('click', '.shopping-item-toggle', function() {
+    $(this).closest("li").find(".shopping-item").toggleClass("shopping-item__checked")
+  });
+}
+
+function removeItem () {
+  $('.shopping-list').on('click', '.shopping-item-delete', function() {
+    $(this).closest("li").remove("li");
   });
 }
